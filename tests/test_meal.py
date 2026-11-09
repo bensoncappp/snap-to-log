@@ -36,3 +36,7 @@ def test_validation_errors_and_warnings():
     assert "typo" in Meal("Laksa", 9000, 20, 50, 20).validate()[0][0]
     errors, warnings = Meal("Laksa", 500, 10, 10, 10).validate()  # macros ~250 kcal
     assert not errors and warnings
+
+
+def test_repeated_spaces_in_name_are_collapsed():
+    assert parse_line("Nasi  lemak   (ate half) | 600 kcal | 20p 70c 25f").name == "Nasi lemak (ate half)"
