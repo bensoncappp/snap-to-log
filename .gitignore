@@ -1,0 +1,17 @@
+# secrets and sessions: never commit
+.env
+auth.json
+*.key.json
+
+# local runtime output
+logs/
+inbox/
+__pycache__/
+.pytest_cache/
+.venv/
+*.png
+*.jpg
+*.jpeg
+*.heic
+!docs/*.png
+!docs/*.gif

@@ -1,0 +1,5 @@
+playwright>=1.45
+# optional, only needed to resize photos when not on a Mac (macOS uses the built-in `sips`)
+pillow>=10
+# tests
+pytest>=8
