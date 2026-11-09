@@ -11,6 +11,7 @@ from meal import Meal, parse_line  # noqa: E402
     "Laksa (ate half) | 520 kcal | 21p 55c 24f",
     "Laksa (ate half) 520 kcal 21p 55c 24f",
     "Laksa (ate half), 520kcal, 21 p 55 c 24 f",
+    "EST | Laksa (ate half) | 520 kcal | 21p 55c 24f",
 ])
 def test_parse_relaxed_spellings(text):
     assert parse_line(text) == Meal("Laksa (ate half)", 520, 21, 55, 24)

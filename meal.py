@@ -1,6 +1,6 @@
 """
 A meal = a name plus calories and macros. One editable text line is the format people see,
-edit and send around (from the iPhone Shortcut, the CLI, or a folder):
+edit and send around (from the iPhone Shortcut or the CLI):
 
     Laksa (ate half) | 520 kcal | 21p 55c 24f
 
@@ -8,6 +8,7 @@ Relaxed spellings are accepted so it's quick to fix by hand on a phone:
 
     Laksa 520 kcal 21p 55c 24f
     Laksa, 520kcal, 21 p 55 c 24 f
+    EST | Laksa | 520 kcal | 21p 55c 24f      (the "EST" prefix from older Shortcuts is ignored)
 """
 import re
 from dataclasses import dataclass
@@ -16,7 +17,7 @@ MAX_NAME_LEN = 60       # Cronometer custom-food names stay readable in the diar
 _N = r"\d+(?:\.\d+)?"
 _SEP = r"[\s|,:;\-–]*"
 LINE = re.compile(
-    rf"^\s*(?P<name>.+?){_SEP}(?P<kcal>{_N})\s*kcal"
+    rf"^\s*(?:EST\b{_SEP})?(?P<name>.+?){_SEP}(?P<kcal>{_N})\s*kcal"
     rf"{_SEP}(?P<p>{_N})\s*p{_SEP}(?P<c>{_N})\s*c{_SEP}(?P<f>{_N})\s*f\s*$",
     re.IGNORECASE,
 )
