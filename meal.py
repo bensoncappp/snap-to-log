@@ -68,7 +68,8 @@ def parse_line(text: str) -> Meal:
     if not m:
         raise ValueError(f"can't read {text.strip()!r}; expected e.g. "
                          "'Laksa | 520 kcal | 21p 55c 24f'")
-    return Meal(m.group("name").strip(" |,"), float(m.group("kcal")),
+    name = " ".join(m.group("name").strip(" |,").split())  # web pages collapse repeated spaces
+    return Meal(name, float(m.group("kcal")),
                 float(m.group("p")), float(m.group("c")), float(m.group("f")))
 
 
